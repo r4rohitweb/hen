@@ -19,19 +19,20 @@ export default function HeroSection() {
 <g stroke={"#c7a257"} strokeWidth={"2"} strokeLinecap={"round"} opacity={".6"}><path d={"m296 825 20 4m-9-16 16 2m843 31 21-3m-10 15 13-4m-92-45 18 4M182 789l15 2m1187 34 19-5m-140 41 16 2"} /></g>
 </svg>
 <div className={"hero-copy"}>
-<p className={"hero-story-kicker"}>{"ONE HEN. ONE EGG. A WHOLE LITTLE JOURNEY."}</p>
+<p className={"hero-story-kicker"}>{"ONE HEN. TWO GOOD EGGS. A WHOLE LITTLE JOURNEY."}</p>
 <h1 id={"hero-title"}><span className={"headline-line"}>{"Good "}<span className={"highlight"}>{"eggs."}</span></span><span className={"headline-line"}>{"Better"}</span><span className={"headline-line"}><span className={"highlight"}>{"mornings."}</span></span></h1>
 <p>{"Fresh brown and white eggs, from our flock to your pan."}</p>
-<a className={"meet-button"} href={"#farm"}>{"Follow this egg "}<span aria-hidden={"true"}>{"↓"}</span></a>
-<div className={"hero-story-route"} aria-label={"Follow the story from our farm to your breakfast"}><span><b>{"01"}</b>{" Our flock"}</span><i aria-hidden={"true"}></i><span><b>{"02"}</b>{" One good egg"}</span><i aria-hidden={"true"}></i><span><b>{"03"}</b>{" Your morning"}</span></div>
+<a className={"meet-button"} href={"#farm"}>{"Follow our eggs "}<span aria-hidden={"true"}>{"↓"}</span></a>
+<div className={"hero-story-route"} aria-label={"Follow the story from our farm to your breakfast"}><span><b>{"01"}</b>{" Our flock"}</span><i aria-hidden={"true"}></i><span><b>{"02"}</b>{" Two good eggs"}</span><i aria-hidden={"true"}></i><span><b>{"03"}</b>{" Your morning"}</span></div>
 </div>
-<div className={"hero-scene"} aria-label={"A hen lays one brown egg. Follow its journey from the farm to your breakfast as you scroll"} role={"img"}>
+<div className={"hero-scene"} aria-label={"A hen settles into a straw nest and lays two eggs, one brown and one white. Follow them from the farm as you scroll"} role={"img"}>
+<img className={"hero-nest"} src={"assets/hero-nest.svg"} alt={""} aria-hidden={"true"} width={"440"} height={"170"} />
 <div className={"egg-display"} aria-hidden={"true"}>
 <div className={"egg-sun"}></div>
 <p className={"egg-display-note"}>{"Fresh from"}<br />{"our flock."}<svg viewBox={"0 0 90 65"}><path d={"M9 6C46 1 72 20 66 52m0 0-11-14m11 14 13-9"} /></svg></p>
 <svg className={"egg-stamp"} viewBox={"0 0 120 120"}><defs><path id={"egg-stamp-circle"} d={"M60 15a45 45 0 1 1-.1 0"} /></defs><circle cx={"60"} cy={"60"} r={"56"} fill={"#f7e9b7"} /><circle cx={"60"} cy={"60"} r={"52"} fill={"none"} stroke={"#c6a452"} strokeDasharray={"2 4"} /><text><textPath href={"#egg-stamp-circle"} startOffset={"1%"}>{"GOOD EGGS · GOOD MORNINGS · "}</textPath></text><path d={"M60 38c-10 0-18 18-18 29 0 11 7 16 18 16s18-5 18-16c0-11-8-29-18-29Z"} fill={"#dbad4c"} /><path d={"m53 62 5 5 10-12"} fill={"none"} stroke={"#fff7de"} strokeWidth={"3"} strokeLinecap={"round"} strokeLinejoin={"round"} /></svg>
 <svg className={"egg-tokri"} viewBox={"0 0 600 400"} aria-hidden={"true"}><defs><linearGradient id={"tokri-wood"} x2={"0"} y2={"1"}><stop stopColor={"#d4a66b"} /><stop offset={".5"} stopColor={"#b27c45"} /><stop offset={"1"} stopColor={"#88552e"} /></linearGradient><linearGradient id={"tokri-rim"} x2={"0"} y2={"1"}><stop stopColor={"#ebc38c"} /><stop offset={"1"} stopColor={"#a66e36"} /></linearGradient><pattern id={"tokri-weave"} width={"44"} height={"26"} patternUnits={"userSpaceOnUse"}><rect width={"44"} height={"26"} fill={"#bd8b53"} /><path d={"M0 5h44M0 18h44"} stroke={"#e1b37b"} strokeWidth={"6"} /><path d={"m5 0 4 26m22-26 4 26"} stroke={"#8f5b30"} strokeWidth={"5"} /><path d={"m7 0 4 26m22-26 4 26"} stroke={"#d7a46c"} strokeWidth={"2"} /></pattern><radialGradient id={"tokri-ground"}><stop stopColor={"#634121"} stopOpacity={".25"} /><stop offset={"1"} stopColor={"#634121"} stopOpacity={"0"} /></radialGradient></defs><ellipse cx={"300"} cy={"373"} rx={"240"} ry={"23"} fill={"url(#tokri-ground)"} /><path d={"M111 234C104-25 496-25 489 234"} fill={"none"} stroke={"#986131"} strokeWidth={"27"} /><path d={"M111 234C104-25 496-25 489 234"} fill={"none"} stroke={"#ddb17a"} strokeWidth={"17"} /><path d={"M111 234C104-25 496-25 489 234"} fill={"none"} stroke={"#ad7945"} strokeWidth={"4"} strokeDasharray={"3 11"} /><path d={"M60 235 110 350Q300 410 490 350L540 235Z"} fill={"url(#tokri-wood)"} /><ellipse cx={"300"} cy={"235"} rx={"240"} ry={"70"} fill={"url(#tokri-rim)"} /><ellipse cx={"300"} cy={"235"} rx={"220"} ry={"52"} fill={"#8e6037"} /><ellipse cx={"300"} cy={"239"} rx={"204"} ry={"41"} fill={"#a87c4b"} /></svg>
-<span className={"egg-display-caption"}>{"One little egg. "}<em>{"A whole story ahead."}</em></span>
+<span className={"egg-display-caption"}>{"Fresh from the nest. "}<em>{"A whole story ahead."}</em></span>
 </div>
 <span className={"speech"} aria-hidden={"true"}>{"bok bok!"}</span>
 <span className={"sparkle sparkle-one"} aria-hidden={"true"}>{"✦"}</span>
@@ -43,8 +44,8 @@ export default function HeroSection() {
 <linearGradient id={"wing"} x1={"230"} y1={"300"} x2={"340"} y2={"400"}><stop stopColor={"#efad03"} /><stop offset={"1"} stopColor={"#e29a00"} /></linearGradient>
 <radialGradient id={"shade"}><stop stopColor={"#a08b50"} stopOpacity={".22"} /><stop offset={"1"} stopColor={"#a08b50"} stopOpacity={"0"} /></radialGradient>
 </defs>
-<ellipse cx={"308"} cy={"526"} rx={"185"} ry={"22"} fill={"url(#shade)"} />
-<g stroke={"#c29532"} strokeWidth={"4"} strokeLinecap={"round"}><path d={"m168 519 52-12 66 18 69-9 69 15M203 534l63-8 58 13 84-7M304 508l57 11 58-5 45 15"} /></g>
+<ellipse className={"hen-ground"} cx={"308"} cy={"526"} rx={"185"} ry={"22"} fill={"url(#shade)"} />
+<g className={"hen-ground"} stroke={"#c29532"} strokeWidth={"4"} strokeLinecap={"round"}><path d={"m168 519 52-12 66 18 69-9 69 15M203 534l63-8 58 13 84-7M304 508l57 11 58-5 45 15"} /></g>
 <g stroke={"#cc891e"} strokeWidth={"7"} strokeLinecap={"round"}><path className={"hen-leg hen-leg-left"} d={"m289 462-13 43-19 7"} /><path className={"hen-leg hen-leg-right"} d={"m353 463 8 42 16 8"} /></g>
 <g fill={"url(#tail)"}>
 <path d={"M193 318C119 297 109 219 117 144c54 29 88 96 76 174Z"} />
@@ -67,7 +68,7 @@ export default function HeroSection() {
 <span className={"egg-slot hero-brown"}></span><span className={"egg-slot hero-white"}></span>
 </div>
 <div className={"grain-trail"} aria-hidden={"true"}></div>
-<p className={"hen-scroll-hint"} aria-hidden={"true"}>{"One little egg. Follow it down. "}<span>{"↓"}</span></p>
+<p className={"hen-scroll-hint"} aria-hidden={"true"}>{"A cosy nest. Two good eggs. "}<span>{"↓"}</span></p>
 </div>
 <div className={"torn-edge"} aria-hidden={"true"}></div>
 </section>

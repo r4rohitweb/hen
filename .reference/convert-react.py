@@ -6,7 +6,8 @@ import json
 import re
 
 root = Path(__file__).resolve().parent.parent
-source = (root / 'index.html').read_text(encoding='utf-8')
+legacy = root / '.reference' / 'legacy'
+source = (root / '.reference' / 'pre-react.html').read_text(encoding='utf-8')
 components = root / 'src' / 'components'
 animations = root / 'src' / 'animations'
 styles = root / 'src' / 'styles'
@@ -110,7 +111,7 @@ for match in re.finditer(r'    <section\b[^>]*\bid="([^"]+)"[\s\S]*?    </sectio
     write_component(section_names[key],markup,props,imports)
 
 # Preserve the existing carton illustration, with React arrays replacing markup injection.
-bottom = (root / 'bottom.js').read_text(encoding='utf-8')
+bottom = (legacy / 'bottom.js').read_text(encoding='utf-8')
 carton = re.search(r'return `(<svg class="carton-svg"[\s\S]*?)`;\n  }', bottom)[1]
 carton = carton.replace('>10</text>', '>${count}</text>')
 carton_jsx = jsx(carton)
@@ -140,7 +141,7 @@ carton_jsx = carton_jsx.replace('{"Fresh Brown Eggs"}', '{`Fresh ${colour === "w
 # Animation modules are initialized by a React effect, never by importing a file.
 module_names = {'script.js':'hero','bottom.js':'shopAndCare','cooking.js':'cooking','mornings.js':'mornings','escape.js':'escape','inside.js':'inside','journey.js':'journey'}
 for filename, name in module_names.items():
-    code = (root / filename).read_text(encoding='utf-8')
+    code = (legacy / filename).read_text(encoding='utf-8')
     code = re.sub(r'^\(\(\) => \{\s*', '', code)
     code = re.sub(r'\}\)\(\);\s*$', '', code)
     if filename == 'script.js':
@@ -150,7 +151,7 @@ for filename, name in module_names.items():
     elif filename == 'bottom.js':
         code = code[:code.index("  const tour = document.querySelector('.tour-dialog');")]
         start = code.index("  const care = document.querySelector('.care-section');")
-        code = "  'use strict';\n  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;\n" + code[start:]
+        code = "  const motion = matchMedia('(prefers-reduced-motion: reduce)');\n  let reduced = motion.matches;\n" + code[start:]
         a = code.index("  const flight = document.createElement('div');")
         b = code.index("  const open = care.querySelector('.carton-open');")
         code = code[:a] + "  const flight = document.querySelector('.carton-flight');\n" + code[b:]
@@ -171,6 +172,6 @@ for filename, name in module_names.items():
     declaration = f'export default function init{name[0].upper() + name[1:]}(scope) {{\n  const {{ requestAnimationFrame, ResizeObserver, IntersectionObserver }} = scope;\n'
     (animations / (name + '.js')).write_text(declaration + code + '\n}\n', encoding='utf-8')
 
-for path in root.glob('*.css'):
+for path in legacy.glob('*.css'):
     (styles / path.name).write_text(path.read_text(encoding='utf-8'), encoding='utf-8')
 print('Created JSX section components, React carton, effect-based animations and styles.')

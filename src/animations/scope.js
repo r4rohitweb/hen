@@ -4,7 +4,7 @@ export function createAnimationScope(root) {
   let active = true;
   const disposers = [];
   const frames = new Set();
-  const attributes = ['style', 'class', 'aria-hidden', 'aria-current', 'aria-valuenow', 'fill', 'viewBox', 'x', 'y', 'rx', 'ry', 'opacity'];
+  const attributes = ['style', 'class', 'aria-hidden', 'aria-current', 'aria-valuenow', 'fill', 'viewBox', 'x', 'y', 'rx', 'ry', 'opacity', 'data-care-filled', 'data-care-closing', 'data-care-sealing'];
   const snapshots = [root, ...root.querySelectorAll('*')].map(element => ({
     element, values: attributes.map(name => [name, element.getAttribute(name)]),
   }));
@@ -13,6 +13,10 @@ export function createAnimationScope(root) {
 
   return {
     guard,
+    defer(dispose) {
+      if (active) disposers.push(dispose);
+      else dispose();
+    },
     on(target, type, callback, options) {
       const listener = guard(callback);
       target.addEventListener(type, listener, options);
@@ -46,6 +50,7 @@ export function createAnimationScope(root) {
       disposers.push(() => element.replaceChildren(...children));
     },
     dispose() {
+      if (!active) return;
       active = false;
       frames.forEach(id => window.cancelAnimationFrame(id));
       disposers.reverse().forEach(dispose => dispose());

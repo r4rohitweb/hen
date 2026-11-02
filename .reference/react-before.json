@@ -1,0 +1,184 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "layout": [
+      {
+        "id": "home",
+        "top": 0,
+        "height": 2700
+      },
+      {
+        "id": "farm",
+        "top": 2700,
+        "height": 1111
+      },
+      {
+        "id": "eggs",
+        "top": 3811,
+        "height": 754
+      },
+      {
+        "id": "inside",
+        "top": 4565,
+        "height": 3600
+      },
+      {
+        "id": "egg-escape",
+        "top": 8165,
+        "height": 4140
+      },
+      {
+        "id": "cooking",
+        "top": 12305,
+        "height": 4410
+      },
+      {
+        "id": "mornings",
+        "top": 16715,
+        "height": 4770
+      },
+      {
+        "id": "shop",
+        "top": 21485,
+        "height": 866
+      },
+      {
+        "id": "care",
+        "top": 22351,
+        "height": 3240
+      }
+    ],
+    "headings": [
+      "Good eggs.Bettermornings.",
+      "Meet the farmbehind the eggs.",
+      "Two shells. Same good egg.",
+      "The Brown One",
+      "The White One",
+      "Small shell. A whole lot inside.",
+      "One ordinary egg.",
+      "The great egg escape.",
+      "Just a little wobble…",
+      "From shell to skillet.",
+      "A little crack.",
+      "Into the pan.",
+      "Whisk up some sunshine.",
+      "A little warmth.",
+      "Hello, golden omelette.",
+      "What will your morning become?",
+      "One egg.So manypossibilities.",
+      "Runninglate.",
+      "Takingit slow.",
+      "A littleindulgence.",
+      "Feedingeveryone.",
+      "Differentmornings.Same good egg.",
+      "Pick your pack.",
+      "Brown Eggs, Pack of 6",
+      "Brown Eggs, Pack of 10",
+      "Brown Eggs, Pack of 12",
+      "Packed soft.Sealed with sunshine.",
+      "Ten good eggs 0 / 10",
+      "Closed up snug",
+      "Sealed with our sticker",
+      "Shop",
+      "Explore",
+      "Say hello",
+      "",
+      "Around the farm"
+    ],
+    "errors": []
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "layout": [
+      {
+        "id": "home",
+        "top": 0,
+        "height": 2701
+      },
+      {
+        "id": "farm",
+        "top": 2701,
+        "height": 1033
+      },
+      {
+        "id": "eggs",
+        "top": 3734,
+        "height": 641
+      },
+      {
+        "id": "inside",
+        "top": 4375,
+        "height": 3292
+      },
+      {
+        "id": "egg-escape",
+        "top": 7666,
+        "height": 3798
+      },
+      {
+        "id": "cooking",
+        "top": 11464,
+        "height": 3967
+      },
+      {
+        "id": "mornings",
+        "top": 15431,
+        "height": 4304
+      },
+      {
+        "id": "shop",
+        "top": 19736,
+        "height": 1476
+      },
+      {
+        "id": "care",
+        "top": 21211,
+        "height": 2954
+      }
+    ],
+    "headings": [
+      "Good eggs.Bettermornings.",
+      "Meet the farmbehind the eggs.",
+      "Two shells. Same good egg.",
+      "The Brown One",
+      "The White One",
+      "Small shell. A whole lot inside.",
+      "One ordinary egg.",
+      "The great egg escape.",
+      "Just a little wobble…",
+      "From shell to skillet.",
+      "A little crack.",
+      "Into the pan.",
+      "Whisk up some sunshine.",
+      "A little warmth.",
+      "Hello, golden omelette.",
+      "What will your morning become?",
+      "One egg.So manypossibilities.",
+      "Runninglate.",
+      "Takingit slow.",
+      "A littleindulgence.",
+      "Feedingeveryone.",
+      "Differentmornings.Same good egg.",
+      "Pick your pack.",
+      "Brown Eggs, Pack of 6",
+      "Brown Eggs, Pack of 10",
+      "Brown Eggs, Pack of 12",
+      "Packed soft.Sealed with sunshine.",
+      "Ten good eggs 0 / 10",
+      "Closed up snug",
+      "Sealed with our sticker",
+      "Shop",
+      "Explore",
+      "Say hello",
+      "",
+      "Around the farm"
+    ],
+    "errors": []
+  }
+]

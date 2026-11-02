@@ -10,6 +10,7 @@ if(!urls.length)urls.push('file:///C:/xampp/htdocs/testing/egg/index.html');
    const errors=[];page.on('pageerror',error=>errors.push(error.message));
    await page.goto(url,{waitUntil:'networkidle'});
    await page.waitForFunction(()=>document.body.classList.contains('egg-journey'));
+   await page.evaluate(()=>document.fonts.ready);
    assert.equal(await page.locator('.product-image .carton-svg').count(),3,'shop initializes');
    const scenes=[
     ['#home','.hero-inner','.hen-walker','transform'],
@@ -23,6 +24,7 @@ if(!urls.length)urls.push('file:///C:/xampp/htdocs/testing/egg/index.html');
     const states=[];
     for(const progress of [.1,.7]){
      await page.evaluate(y=>scrollTo({top:y,behavior:'instant'}),layout.top+layout.range*progress);
+     await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
      await page.waitForTimeout(100);
      states.push(await page.locator(element).evaluate((el,key)=>el.style.getPropertyValue(key),property));
     }

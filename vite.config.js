@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 
 const runtimePath = 'assets/runtime/site-runtime.js';
 
@@ -11,7 +11,8 @@ export default defineConfig({
       name: 'source-scripts-in-development',
       apply: 'serve',
       transformIndexHtml(html) {
-        return html.replace(`<script src="${runtimePath}" defer vite-ignore></script>`, '<script type="module" src="site.js"></script>');
+        return html.replace('  <link rel="stylesheet" href="assets/runtime/site-runtime.css" vite-ignore>\n', '')
+          .replace(`<script src="${runtimePath}" defer vite-ignore></script>`, '<script type="module" src="src/main.jsx"></script>');
       },
     },
     {
@@ -28,7 +29,17 @@ export default defineConfig({
         },
       },
       generateBundle() {
-        this.emitFile({type:'asset',fileName:runtimePath,source:readFileSync(new URL(runtimePath,import.meta.url))});
+        for (const fileName of [runtimePath, 'assets/runtime/site-runtime.css']) {
+          this.emitFile({type:'asset',fileName,source:readFileSync(new URL(fileName,import.meta.url))});
+        }
+        // JSX uses the same relative image URLs as the direct-file version.
+        const assetsRoot = new URL('./assets/', import.meta.url);
+        for (const file of readdirSync(assetsRoot, {recursive:true})) {
+          const relative = file.replaceAll('\\', '/');
+          if (!relative.startsWith('runtime/') && /\.(png|jpe?g|webp|svg|gif|avif|mp4)$/i.test(relative)) {
+            this.emitFile({type:'asset',fileName:`assets/${relative}`,source:readFileSync(new URL(relative,assetsRoot))});
+          }
+        }
       },
     },
   ],
