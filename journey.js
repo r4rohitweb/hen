@@ -29,27 +29,25 @@
     }
     return {time, x:r.left + r.width / 2, y:r.top + scrollY + r.height / 2 + correction, w:r.width, h:r.height};
   }
-  function paint(point, opacity = 1, angle = 0, cooked = false) {
-    traveler.classList.toggle('is-cooked', cooked);
-    traveler.style.visibility = opacity > 0 ? 'visible' : 'hidden';
-    traveler.style.opacity = String(opacity);
-    traveler.style.width = `${point.w}px`;
-    traveler.style.height = `${point.h}px`;
-    traveler.style.transform = `translate3d(${point.x - point.w / 2}px,${point.y - scrollY - point.h / 2}px,0) rotate(${angle}deg)`;
+  function paint(point, opacity = 1, angle = 0, cooked = false, element = traveler) {
+    element.classList.toggle('is-cooked', cooked);
+    element.style.visibility = opacity > 0 ? 'visible' : 'hidden';
+    element.style.opacity = String(opacity);
+    element.style.width = `${point.w}px`;
+    element.style.height = `${point.h}px`;
+    element.style.transform = `translate3d(${point.x - point.w / 2}px,${point.y - scrollY - point.h / 2}px,0) rotate(${angle}deg)`;
   }
-  function heroRest(time) {
-    const scene = anchor(get('.hero-scene'), time, hero, '.hero-inner');
-    const slot = anchor(get('.hero-brown'), time, hero, '.hero-inner');
-    const w = Math.min(slot.w * .85, innerHeight * .3);
+  function heroRest(time, white = false) {
+    const nest = anchor(get('.hero-nest'), time, hero, '.hero-inner');
+    const w = nest.w * .18;
     const h = w * 1.4;
-    // Keep the egg in the centre of the illustration, above the viewport edge.
-    const centreY = Math.min(innerWidth <= 640 ? scene.y - time : innerHeight * .6, innerHeight - h / 2 - 65);
-    return {time, x:scene.x, y:time + centreY, w, h};
+    // The front straw layer covers the bottoms, so the eggs sit inside the nest.
+    return {time, x:nest.x + (white ? .62 : -.62) * w, y:nest.y + nest.h * .03 - h * .5, w, h};
   }
-  function travel(a, b, cooked = false) {
+  function travel(a, b, cooked = false, element = traveler) {
     const t = range(scrollY, a.time, b.time), eased = smooth(t);
     if (Math.abs(a.x-b.x) < .5 && Math.abs(a.y-b.y) < .5 && Math.abs(a.w-b.w) < .5) {
-      paint(a, 1, 0, cooked);
+      paint(a, 1, 0, cooked, element);
       return;
     }
     const point = {};
@@ -59,16 +57,17 @@
     if (!cooked) {
       const shrink = 1 - arc * (innerWidth <= 640 ? .4 : .18);
       point.w *= shrink; point.h *= shrink;
-      point.x += arc * (innerWidth <= 640 ? innerWidth * .5 : innerWidth * .16);
+      point.x += arc * (innerWidth <= 640 ? innerWidth * .5 : innerWidth * .16) * (element === whiteEgg ? -1 : 1);
       point.x = Math.max(point.w / 2 + 8, Math.min(innerWidth - point.w / 2 - 8, point.x));
     }
-    paint(point, 1, Math.sin(t * Math.PI * 2) * (cooked ? 5 : 12), cooked);
+    paint(point, 1, Math.sin(t * Math.PI * 2) * (cooked ? 5 : 12), cooked, element);
   }
   function render() {
     queued = false;
     if (motion.matches) {
       traveler.style.visibility = 'hidden';
       whiteEgg.style.opacity = '1';
+      whiteEgg.style.visibility = 'visible';
       [insideEgg, escapeEgg, shell, omelette, plate].forEach(el => el.style.visibility = '');
       return;
     }
@@ -79,8 +78,6 @@
     const farmTime = Math.max(heroEnd + 1, nestBox.top + scrollY + nestBox.height / 2 - H * .55);
     const farmExit = Math.max(farmTime + 1, farm.offsetTop + farm.offsetHeight - H * .7);
     const eggTime = Math.max(farmExit + 1, eggs.offsetTop - H * .08);
-    // Complete the reveal in time, so pausing the scroll never leaves a ghost egg.
-    whiteEgg.style.opacity = scrollY >= eggTime ? '1' : '0';
     const insideStart = inside.offsetTop, insideEnd = insideStart + pinRange(inside, '.inside-sticky');
     const escapeStart = escape.offsetTop, escapeEnd = escapeStart + pinRange(escape, '.escape-sticky');
     const cookingEntry = cooking.offsetTop + pinRange(cooking, '.cooking-sticky') * .09;
@@ -93,13 +90,26 @@
     plate.style.visibility = scrollY >= morningEntry ? 'visible' : 'hidden';
     if (scrollY < heroEnd) {
       const p = clamp(scrollY / Math.max(1, heroEnd));
-      const svg = get('.hen');
-      const laid = new DOMPoint(230, 435).matrixTransform(svg.getScreenCTM());
-      const rest = heroRest(scrollY);
-      const t = smooth(range(p, .34, .68));
-      const w = mix(W <= 640 ? 53 : 90, rest.w, t);
-      paint({x:mix(laid.x, rest.x, t), y:mix(laid.y + scrollY + 25, rest.y, t), w, h:w * 1.4}, smooth(range(p, .27, .35)), -10 * (1-t));
+      [traveler, whiteEgg].forEach((element, i) => {
+        const rest = heroRest(scrollY, i === 1);
+        const reveal = smooth(range(p, .76 + i*.08, .82 + i*.08));
+        const t = smooth(range(p, .76 + i*.08, .87 + i*.08));
+        const w = rest.w * mix(.65,1,t);
+        paint({x:mix(rest.x + (i ? -1 : 1)*rest.w*.45,rest.x,t), y:rest.y + rest.h*.22*(1-t), w, h:w*1.4}, reveal, (i ? 9 : -9)*(1-t), false, element);
+      });
       return;
+    }
+    // The white egg follows its own path, then stays at its comparison label.
+    if (scrollY < eggTime) {
+      const whiteNest = anchor(nest, farmTime);
+      whiteNest.x += whiteNest.w * 1.15;
+      const nodes = [heroRest(heroEnd, true), whiteNest,
+        {time:farmExit,x:W * .66,y:farmExit + H * .62,w:W <= 640 ? 55 : 82,h:W <= 640 ? 77 : 115},
+        anchor(get('.destination-white'), eggTime)];
+      const i = nodes.findIndex((node,index) => index < nodes.length-1 && scrollY <= nodes[index+1].time);
+      travel(nodes[Math.max(0,i)], nodes[Math.max(0,i)+1], false, whiteEgg);
+    } else {
+      paint(anchor(get('.destination-white'), scrollY), 1, 0, false, whiteEgg);
     }
     if (scrollY <= insideStart) {
       const eggExit = Math.min(insideStart - 1, Math.max(eggTime + 1, eggs.offsetTop + eggs.offsetHeight - H * .65));

@@ -17,13 +17,8 @@
   <link rel="stylesheet" href="escape.css">
   <link rel="stylesheet" href="inside.css">
   <link rel="stylesheet" href="journey.css">
-  <script src="script.js" defer></script>
-  <script src="bottom.js" defer></script>
-  <script src="cooking.js" defer></script>
-  <script src="mornings.js" defer></script>
-  <script src="escape.js" defer></script>
-  <script src="inside.js" defer></script>
-  <script src="journey.js" defer></script>
+  <link rel="stylesheet" href="care-story.css">
+  <script src="assets/runtime/site-runtime.js" defer vite-ignore></script>
 </head>
 <body>
   <header class="header">
@@ -49,19 +44,20 @@
           <g stroke="#c7a257" stroke-width="2" stroke-linecap="round" opacity=".6"><path d="m296 825 20 4m-9-16 16 2m843 31 21-3m-10 15 13-4m-92-45 18 4M182 789l15 2m1187 34 19-5m-140 41 16 2"/></g>
         </svg>
         <div class="hero-copy">
-          <p class="hero-story-kicker">ONE HEN. ONE EGG. A WHOLE LITTLE JOURNEY.</p>
+          <p class="hero-story-kicker">ONE HEN. TWO GOOD EGGS. A WHOLE LITTLE JOURNEY.</p>
           <h1 id="hero-title"><span class="headline-line">Good <span class="highlight">eggs.</span></span><span class="headline-line">Better</span><span class="headline-line"><span class="highlight">mornings.</span></span></h1>
           <p>Fresh brown and white eggs, from our flock to your pan.</p>
-          <a class="meet-button" href="#farm">Follow this egg <span aria-hidden="true">↓</span></a>
-          <div class="hero-story-route" aria-label="Follow the story from our farm to your breakfast"><span><b>01</b> Our flock</span><i aria-hidden="true"></i><span><b>02</b> One good egg</span><i aria-hidden="true"></i><span><b>03</b> Your morning</span></div>
+          <a class="meet-button" href="#farm">Follow our eggs <span aria-hidden="true">↓</span></a>
+          <div class="hero-story-route" aria-label="Follow the story from our farm to your breakfast"><span><b>01</b> Our flock</span><i aria-hidden="true"></i><span><b>02</b> Two good eggs</span><i aria-hidden="true"></i><span><b>03</b> Your morning</span></div>
         </div>
-        <div class="hero-scene" aria-label="A hen lays one brown egg. Follow its journey from the farm to your breakfast as you scroll" role="img">
+        <div class="hero-scene" aria-label="A hen settles into a straw nest and lays two eggs, one brown and one white. Follow them from the farm as you scroll" role="img">
+          <img class="hero-nest" src="assets/hero-nest.svg" alt="" aria-hidden="true" width="440" height="170">
           <div class="egg-display" aria-hidden="true">
             <div class="egg-sun"></div>
             <p class="egg-display-note">Fresh from<br>our flock.<svg viewBox="0 0 90 65"><path d="M9 6C46 1 72 20 66 52m0 0-11-14m11 14 13-9"/></svg></p>
             <svg class="egg-stamp" viewBox="0 0 120 120"><defs><path id="egg-stamp-circle" d="M60 15a45 45 0 1 1-.1 0"/></defs><circle cx="60" cy="60" r="56" fill="#f7e9b7"/><circle cx="60" cy="60" r="52" fill="none" stroke="#c6a452" stroke-dasharray="2 4"/><text><textPath href="#egg-stamp-circle" startOffset="1%">GOOD EGGS &#183; GOOD MORNINGS &#183; </textPath></text><path d="M60 38c-10 0-18 18-18 29 0 11 7 16 18 16s18-5 18-16c0-11-8-29-18-29Z" fill="#dbad4c"/><path d="m53 62 5 5 10-12" fill="none" stroke="#fff7de" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <svg class="egg-tokri" viewBox="0 0 600 400" aria-hidden="true"><defs><linearGradient id="tokri-wood" x2="0" y2="1"><stop stop-color="#d4a66b"/><stop offset=".5" stop-color="#b27c45"/><stop offset="1" stop-color="#88552e"/></linearGradient><linearGradient id="tokri-rim" x2="0" y2="1"><stop stop-color="#ebc38c"/><stop offset="1" stop-color="#a66e36"/></linearGradient><pattern id="tokri-weave" width="44" height="26" patternUnits="userSpaceOnUse"><rect width="44" height="26" fill="#bd8b53"/><path d="M0 5h44M0 18h44" stroke="#e1b37b" stroke-width="6"/><path d="m5 0 4 26m22-26 4 26" stroke="#8f5b30" stroke-width="5"/><path d="m7 0 4 26m22-26 4 26" stroke="#d7a46c" stroke-width="2"/></pattern><radialGradient id="tokri-ground"><stop stop-color="#634121" stop-opacity=".25"/><stop offset="1" stop-color="#634121" stop-opacity="0"/></radialGradient></defs><ellipse cx="300" cy="373" rx="240" ry="23" fill="url(#tokri-ground)"/><path d="M111 234C104-25 496-25 489 234" fill="none" stroke="#986131" stroke-width="27"/><path d="M111 234C104-25 496-25 489 234" fill="none" stroke="#ddb17a" stroke-width="17"/><path d="M111 234C104-25 496-25 489 234" fill="none" stroke="#ad7945" stroke-width="4" stroke-dasharray="3 11"/><path d="M60 235 110 350Q300 410 490 350L540 235Z" fill="url(#tokri-wood)"/><ellipse cx="300" cy="235" rx="240" ry="70" fill="url(#tokri-rim)"/><ellipse cx="300" cy="235" rx="220" ry="52" fill="#8e6037"/><ellipse cx="300" cy="239" rx="204" ry="41" fill="#a87c4b"/></svg>
-            <span class="egg-display-caption">One little egg. <em>A whole story ahead.</em></span>
+            <span class="egg-display-caption">Fresh from the nest. <em>A whole story ahead.</em></span>
           </div>
           <span class="speech" aria-hidden="true">bok bok!</span>
           <span class="sparkle sparkle-one" aria-hidden="true">✦</span>
@@ -73,8 +69,8 @@
   <linearGradient id="wing" x1="230" y1="300" x2="340" y2="400"><stop stop-color="#efad03"/><stop offset="1" stop-color="#e29a00"/></linearGradient>
   <radialGradient id="shade"><stop stop-color="#a08b50" stop-opacity=".22"/><stop offset="1" stop-color="#a08b50" stop-opacity="0"/></radialGradient>
  </defs>
- <ellipse cx="308" cy="526" rx="185" ry="22" fill="url(#shade)"/>
- <g stroke="#c29532" stroke-width="4" stroke-linecap="round"><path d="m168 519 52-12 66 18 69-9 69 15M203 534l63-8 58 13 84-7M304 508l57 11 58-5 45 15"/></g>
+ <ellipse class="hen-ground" cx="308" cy="526" rx="185" ry="22" fill="url(#shade)"/>
+ <g class="hen-ground" stroke="#c29532" stroke-width="4" stroke-linecap="round"><path d="m168 519 52-12 66 18 69-9 69 15M203 534l63-8 58 13 84-7M304 508l57 11 58-5 45 15"/></g>
  <g stroke="#cc891e" stroke-width="7" stroke-linecap="round"><path class="hen-leg hen-leg-left" d="m289 462-13 43-19 7"/><path class="hen-leg hen-leg-right" d="m353 463 8 42 16 8"/></g>
  <g fill="url(#tail)">
   <path d="M193 318C119 297 109 219 117 144c54 29 88 96 76 174Z"/>
@@ -97,7 +93,7 @@
           <span class="egg-slot hero-brown"></span><span class="egg-slot hero-white"></span>
         </div>
         <div class="grain-trail" aria-hidden="true"></div>
-        <p class="hen-scroll-hint" aria-hidden="true">One little egg. Follow it down. <span>&darr;</span></p>
+        <p class="hen-scroll-hint" aria-hidden="true">A cosy nest. Two good eggs. <span>&darr;</span></p>
       </div>
       <div class="torn-edge" aria-hidden="true"></div>
     </section>
@@ -324,11 +320,22 @@
     <section class="care-section" id="care" aria-labelledby="care-title">
       <div class="care-sticky">
         <div class="care-inner">
-          <div class="care-copy"><p class="eyebrow">what you’ll receive</p><h2 id="care-title">Your eggs,<br><span>boxed</span> with care.</h2><p class="care-description">Every order is packed in our moulded-pulp carton and sealed with our sticker. This is what lands on your doorstep.</p>
+          <div class="care-copy"><p class="eyebrow">what you’ll receive</p><h2 id="care-title">Packed soft.<br><span>Sealed with<br> sunshine.</span></h2><p class="care-description">Ten good eggs in a moulded-pulp carton. Closed up snug, and finished with our sticker. A little care, all the way to your door.</p>
             <div class="egg-toggle care-toggle" role="group" aria-label="Preview carton egg colour"><button class="is-active" data-colour="brown" aria-pressed="true"><span class="tiny-egg brown-dot"></span>Brown</button><button data-colour="white" aria-pressed="false"><span class="tiny-egg white-dot"></span>White</button></div>
-            <ol class="care-steps"><li class="is-active"><span class="step-number">1</span><div><h3>Ten good eggs</h3><p>Your pick of the flock, each one settled into its own cup.</p></div></li><li><span class="step-number">2</span><div><h3>Closed up snug</h3><p>A moulded-pulp carton keeps every egg cosy on its way to your door.</p></div></li><li><span class="step-number">3</span><div><h3>Sealed with our sticker</h3><p>The finishing touch, so you know it came from our flock.</p></div></li></ol>
+            <ol class="care-steps">
+              <li class="is-active is-current" aria-current="step"><span class="step-number">1</span><div><h3>Ten good eggs <span class="care-fill-count">0 / 10</span></h3><p>One by one, each egg settles into its own little cup.</p></div></li>
+              <li><span class="step-number">2</span><div><h3>Closed up snug</h3><p>A soft pulp shell keeps everything cosy for the journey.</p></div></li>
+              <li><span class="step-number">3</span><div><h3>Sealed with our sticker</h3><p>The finishing touch. From our flock, with a little love.</p></div></li>
+            </ol>
           </div>
-          <div class="care-visual"><div class="care-carton" data-carton="10" role="img" aria-label="A ten-egg carton closes and is sealed with a Yolk and Co. label as you scroll"></div><div class="sticker-note" aria-hidden="true">our sticker<svg viewBox="0 0 100 65"><path d="M95 6C55 0 33 16 15 53m0 0 0-20m0 20 19-8"/></svg></div><p class="scroll-cue">a little scroll, a little care <span>↓</span></p></div>
+          <div class="care-visual">
+            <div class="care-stage" role="img" aria-label="Scroll to nestle ten eggs into a carton, fold the lid closed, and add the Yolk and Co. sticker">
+              <div class="care-carton" data-carton="10" aria-hidden="true"></div>
+            </div>
+            <div class="sticker-note" aria-hidden="true">our little seal of care<svg viewBox="0 0 100 65"><path d="M95 6C55 0 33 16 15 53m0 0 0-20m0 20 19-8"/></svg></div>
+            <p class="scroll-cue"><span class="care-phase-label">a little scroll, a little care</span> <span>↓</span></p>
+            <div class="care-progress" role="progressbar" aria-label="Packing your eggs" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+          </div>
         </div>
       </div>
       <div class="torn-edge care-edge" aria-hidden="true"></div>
@@ -336,6 +343,7 @@
   </main>
   <footer class="footer" id="footer"><div class="footer-inner"><div class="footer-brand"><a class="brand" href="#home" aria-label="Yolk and Co. home"><span class="brand-art" aria-hidden="true"><span></span><span></span><span></span></span><span>Yolk <small>&</small> Co.</span><span class="brand-caption">A LITTLE GOOD, EVERY DAY.</span></a><p class="footer-tagline">Good eggs. Better mornings.</p><p>Fresh from our flock.<br>A little good for your every day.</p></div><div class="footer-links"><h3>Shop</h3><a href="#shop" data-shop-colour="brown">Brown eggs</a><a href="#shop" data-shop-colour="white">White eggs</a><a href="#care">Packed with care</a></div><div class="footer-links"><h3>Explore</h3><a href="#farm">Our poultry</a><a href="#eggs">Meet the eggs</a><a href="#inside">A whole little world inside</a><a href="#egg-escape">The great egg escape</a><a href="#cooking">From shell to skillet</a><a href="#mornings">Your kind of morning</a><a href="#home">Back to the top &uarr;</a></div><div class="footer-hello"><h3>Say hello</h3><p>Something on your sunny side?<br>We’d love to hear it.</p><a class="meet-button" href="#shop">Order eggs <span aria-hidden="true">↗</span></a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Yolk & Co.</span><span>Made for good mornings. <span aria-hidden="true">✦</span></span></div></footer>
   <div class="egg-layer" aria-hidden="true"><div class="egg egg-brown"><span></span></div><div class="egg egg-white"><span></span></div></div>
+  <img class="hero-nest-front" src="assets/hero-nest-front.svg" alt="" aria-hidden="true" width="440" height="170">
   <dialog class="info-dialog"><button class="dialog-close" aria-label="Close">×</button><span class="dialog-icon" aria-hidden="true">✦</span><h2></h2><p></p><button class="dialog-done">Got it</button></dialog>
   <dialog class="tour-dialog"><button class="tour-close" aria-label="Close farm tour">×</button><p class="eyebrow">A peek at the poultry</p><h2 class="tour-title">Around the farm</h2><img class="tour-image" src="assets/farm-exterior.png" alt="Illustrative farm exterior"><div class="tour-controls"><button class="tour-prev" aria-label="Previous tour image">←</button><p class="tour-caption">The farm · 1 / 2</p><button class="tour-next" aria-label="Next tour image">→</button></div><small>Illustrative farm imagery.</small></dialog>
 </body>

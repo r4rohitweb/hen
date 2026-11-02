@@ -4,10 +4,14 @@
 .journey-egg.is-cooked:before{background:radial-gradient(ellipse at 28% 60%,#6e894c 0 3px,transparent 4px),radial-gradient(ellipse at 61% 40%,#6e894c 0 3px,transparent 4px),radial-gradient(ellipse at 74% 68%,#6e894c 0 3px,transparent 4px);opacity:.8}
 .journey-egg.is-cooked:after{display:none}
 .egg-journey .egg-layer>.egg-brown{visibility:hidden}
-.egg-journey .egg-layer>.egg-white{transition:opacity .25s ease-out}
+.egg-journey .egg-layer>.egg-white{position:fixed;transition:none}
 .egg-journey .egg-tokri,.egg-journey .tokri-front,.egg-journey .egg-stamp{display:none}
 .egg-journey .hero .egg-display-note{top:2%;left:17%}
 .egg-journey .hero .egg-display-caption{bottom:0}
+.hero-nest{position:absolute;left:6%;top:67%;width:88%;height:auto;z-index:0;opacity:0;pointer-events:none}
+.hero-nest-front{position:fixed;left:0;top:0;z-index:7;opacity:0;pointer-events:none;will-change:transform}
+.egg-journey .hero .egg-display-caption{bottom:-6%}
+@media(prefers-reduced-motion:reduce){.hero-nest,.hero-nest-front{display:none}}
 .hero-story-kicker{font-size:10px!important;letter-spacing:1.8px;color:#82633b!important;font-weight:900!important;margin-bottom:21px!important;max-width:none!important}
 .hero-story-route{display:flex;align-items:center;gap:13px;margin-top:36px;max-width:390px;color:#725c3e;font-size:10px}
 .hero-story-route span{white-space:nowrap}.hero-story-route b{display:block;font-size:9px;color:#9c7c44;letter-spacing:1px;margin-bottom:6px}.hero-story-route i{height:1px;flex:1;min-width:18px;background:#ad8b4b66}

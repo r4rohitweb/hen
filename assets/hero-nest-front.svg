@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 170" fill="none">
+ <defs><linearGradient id="bowl" x2="0" y2="1"><stop stop-color="#d4aa63"/><stop offset="1" stop-color="#a5753e"/></linearGradient></defs>
+ <path d="M24 65Q215 132 416 65l-38 63q-156 57-306 0Z" fill="url(#bowl)"/>
+ <g stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#b48649" stroke-width="7"><path d="m30 76 79 37 119 19 119-18 60-34M48 99l77 34 102 11 113-17 48-26M83 126l79 21 90 5 91-18"/></g>
+  <g stroke="#ecd19a" stroke-width="4"><path d="m24 65 57 27 80 20 87 5 90-17 78-35M41 85l75 29 78 15m-61-18 99 17 96-13 65-28M70 110l65 26 98 8 74-12m-185-10 71 17m69 1 94-25m-215 24 69 14 83-5"/></g>
+  <g stroke="#926234" stroke-width="2.5"><path d="m52 77 48 35 70 18m-49-36 61 29 72 11m-18-22 68 12 70-33m-284 13 65 24 77 11m18-13 53 7 63-22m-232 20 83 21 80-4m-29-35 55-11 47-27"/></g>
+  <g stroke="#dbb978" stroke-width="3"><path d="m35 71-20-6m33 27-29 5m61 19-38 10m72-4-21 22m59-11-8 21m74-16 11 23m69-24 27 20m17-36 43 8m-9-38 36 10m-4-29 24-7"/></g>
+ </g>
+</svg>

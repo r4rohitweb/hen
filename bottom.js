@@ -1,6 +1,7 @@
 (() => {
   'use strict';
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let reduced = motion.matches;
   let colour = 'brown';
   let serial = 0;
   function cartonMarkup(count) {
@@ -26,6 +27,7 @@
     });
     document.querySelectorAll('.product-colour').forEach(el => { el.textContent = colour === 'white' ? 'White' : 'Brown'; });
     document.querySelectorAll('.sticker-egg-text').forEach(el => { el.textContent = `Fresh ${colour === 'white' ? 'White' : 'Brown'} Eggs`; });
+    document.querySelector('.care-section').dispatchEvent(new CustomEvent('care-colour', {detail:colour}));
   }
   document.querySelectorAll('[data-colour]').forEach(button => button.addEventListener('click', () => setColour(button.dataset.colour)));
   document.querySelectorAll('[data-shop-colour]').forEach(link => link.addEventListener('click', () => setColour(link.dataset.shopColour)));
@@ -97,7 +99,7 @@
       // endpoints stay in viewport coordinates as the page moves underneath.
       const handoffStart = care.offsetTop - innerHeight * .85;
       const handoffEnd = care.offsetTop - innerHeight * .05;
-      const handoff = clamp((scrollY - handoffStart) / (handoffEnd - handoffStart));
+      const handoff = care.classList.contains('care-3d-ready') ? 0 : clamp((scrollY - handoffStart) / (handoffEnd - handoffStart));
       const flying = handoff > 0 && handoff < 1;
       sourceCarton.style.opacity = handoff === 0 ? '1' : '0';
       destinationCarton.style.opacity = handoff === 1 ? '1' : '0';
@@ -113,9 +115,9 @@
         flight.style.transform = `translate3d(${lerp(source.left, destination.left)}px,${lerp(source.top, destination.top) - arc * 38}px,0) rotate(${arc * -3}deg)`;
       }
     }
-    const p = clamp((scrollY - care.offsetTop) / Math.max(1, care.offsetHeight - sticky.offsetHeight));
-    const closing = clamp((p - .17) / .36);
-    const sealing = clamp((p - .65) / .25);
+    const p = reduced ? 1 : clamp((scrollY - care.offsetTop) / Math.max(1, care.offsetHeight - sticky.offsetHeight));
+    const closing = clamp((p - .62) / .19);
+    const sealing = clamp((p - .84) / .12);
     open.style.transform = `scaleY(${1 - closing})`;
     open.style.opacity = String(1 - closing);
     closed.style.opacity = String(closing);
@@ -125,11 +127,21 @@
     sticker.style.transform = reduced ? '' : `translateY(${-25 * (1 - sealing)}px)`;
     note.style.opacity = String(sealing);
     note.style.transform = `translateY(${12 * (1 - sealing)}px)`;
-    const active = p < .35 ? 0 : p < .72 ? 1 : 2;
+    const active = p < .62 ? 0 : p < .84 ? 1 : 2;
     steps.forEach((step, i) => {
       step.classList.toggle('is-active', i <= active);
       step.classList.toggle('is-current', i === active);
+      step.classList.toggle('is-complete', i < active || p >= .98);
+      if (i === active) step.setAttribute('aria-current', 'step');
+      else step.removeAttribute('aria-current');
     });
+    const filled = Array.from({length:10}, (_,i) => clamp((p - .06 - i*.045)/.095)).filter(value=>value>=1).length;
+    care.querySelector('.care-fill-count').textContent = `${filled} / 10`;
+    care.querySelector('.care-phase-label').textContent = p < .62 ? 'one by one, a little care' : p < .84 ? 'closed up cosy' : 'from our flock, with love';
+    const progress = care.querySelector('.care-progress');
+    progress.setAttribute('aria-valuenow', String(Math.round(p*100)));
+    progress.querySelector('i').style.transform = `scaleX(${p})`;
+    care.dispatchEvent(new CustomEvent('care-frame', {detail:{p,colour}}));
     if (!reduced) {
       const farm = document.querySelector('.farm-gallery');
       const offset = clamp((innerHeight - farm.getBoundingClientRect().top) / (innerHeight + farm.offsetHeight));
@@ -137,6 +149,7 @@
     }
   }
   function requestFrame() { if (!frame) { frame = true; requestAnimationFrame(animateScroll); } }
+  motion.addEventListener('change', () => { reduced = motion.matches; requestFrame(); });
   addEventListener('scroll', requestFrame, {passive:true});
   addEventListener('resize', measureShop);
   addEventListener('pageshow', requestFrame);
@@ -154,8 +167,8 @@
   }
   const tour = document.querySelector('.tour-dialog');
   const tourItems = [
-    ['assets/farm-exterior.png', 'Around the farm', 'The farm · 1 / 2', 'Illustrative exterior of a poultry farm at golden hour'],
-    ['assets/farm-interior.png', 'Inside the barn', 'Inside the barn · 2 / 2', 'Illustrative interior of a sunlit poultry barn']
+    [document.querySelector('.farm-photo:first-child img').src, 'Around the farm', 'The farm · 1 / 2', 'Illustrative exterior of a poultry farm at golden hour'],
+    [document.querySelector('.farm-photo:nth-child(2) img').src, 'Inside the barn', 'Inside the barn · 2 / 2', 'Illustrative interior of a sunlit poultry barn']
   ];
   let tourIndex = 0;
   function showTour(index) {

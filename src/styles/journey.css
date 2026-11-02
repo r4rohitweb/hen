@@ -1,0 +1,34 @@
+/* One egg connects the scenes; native artwork takes over at each handoff. */
+.journey-egg{position:fixed;left:0;top:0;z-index:6;pointer-events:none;transform-origin:50% 50%;visibility:hidden;will-change:transform;box-shadow:inset -8px -8px 18px #61361035,0 15px 22px #60401b18}
+.journey-egg.is-cooked{background:radial-gradient(ellipse at 35% 28%,#ffe897,#efbf38 65%,#d6951d);border-radius:50% 50% 46% 46% / 75% 75% 25% 25%;box-shadow:inset 0 -5px 0 #c98f25,0 12px 19px #63462122}
+.journey-egg.is-cooked:before{background:radial-gradient(ellipse at 28% 60%,#6e894c 0 3px,transparent 4px),radial-gradient(ellipse at 61% 40%,#6e894c 0 3px,transparent 4px),radial-gradient(ellipse at 74% 68%,#6e894c 0 3px,transparent 4px);opacity:.8}
+.journey-egg.is-cooked:after{display:none}
+.egg-journey .egg-layer>.egg-brown{visibility:hidden}
+.egg-journey .egg-layer>.egg-white{transition:opacity .25s ease-out}
+.egg-journey .egg-tokri,.egg-journey .tokri-front,.egg-journey .egg-stamp{display:none}
+.egg-journey .hero .egg-display-note{top:2%;left:17%}
+.egg-journey .hero .egg-display-caption{bottom:0}
+.hero-story-kicker{font-size:10px!important;letter-spacing:1.8px;color:#82633b!important;font-weight:900!important;margin-bottom:21px!important;max-width:none!important}
+.hero-story-route{display:flex;align-items:center;gap:13px;margin-top:36px;max-width:390px;color:#725c3e;font-size:10px}
+.hero-story-route span{white-space:nowrap}.hero-story-route b{display:block;font-size:9px;color:#9c7c44;letter-spacing:1px;margin-bottom:6px}.hero-story-route i{height:1px;flex:1;min-width:18px;background:#ad8b4b66}
+@media(min-width:641px){
+  .egg-journey .hero-inner{grid-template-columns:44% 56%;padding-top:100px;padding-bottom:80px}
+  .egg-journey .hero-scene{width:min(100%,72svh);justify-self:center;margin-left:0}
+  .egg-journey .hero .egg-display-note{top:5%;left:13%}
+  .egg-journey .hero-copy{max-width:650px}
+  .egg-journey .hero-copy h1{font-size:clamp(58px,5.15vw,86px)}
+}
+.egg-journey .morning-seed{visibility:hidden}
+.journey-farm-stop{display:flex;align-items:center;justify-content:center;gap:22px;max-width:470px;margin:25px auto 5px;padding:0 20px}
+.journey-farm-egg{width:72px;height:101px;flex:none;border-radius:51% 49% 47% 48% / 65% 65% 36% 35%;background:radial-gradient(ellipse at 35% 29%,#e2b985,#ab6d38 65%,#784222);box-shadow:0 13px 18px #70541d20}
+.egg-journey .journey-farm-egg{visibility:hidden}
+.journey-farm-stop>span{font:25px/1.2 Caveat,cursive;text-align:left;color:#856631;rotate:-4deg}
+.hero>.torn-edge{background:var(--paper)}
+.farm-section>.bottom-edge{background:var(--paper)}
+.eggs-section>.bottom-edge{background:#eee9d8}
+.inside-section>.bottom-edge{background:#f6eedb}
+.escape-section>.bottom-edge{background:#f1ecd9}
+.morning-section>.bottom-edge{background:var(--cream)}
+@media(max-width:640px){.journey-farm-stop{margin-top:20px;gap:17px}.journey-farm-stop>span{font-size:22px}.journey-farm-egg{width:58px;height:83px}.egg-journey .hero .egg-display-note{left:10%;top:0;font-size:23px}}
+@media(max-width:640px){.hero-story-kicker{font-size:7px!important;letter-spacing:1.1px;margin-bottom:12px!important}.hero-story-route{margin-top:18px;font-size:8px;gap:10px;max-width:300px}.hero-story-route b{font-size:7px;margin-bottom:4px}.egg-journey .hero .egg-display-note{top:3%;left:0}.egg-journey .hero .egg-display-caption{display:none}}
+@media(prefers-reduced-motion:reduce){.journey-egg{display:none}}
